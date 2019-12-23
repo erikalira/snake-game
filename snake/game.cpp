@@ -5,6 +5,7 @@ void game::setup() {
 	dir = PARAR;
 	x = largura / 2;
 	y = altura / 2;
+	srand(time(NULL));
 	frutaX = rand() % largura;
 	frutaY = rand() % altura;
 	score = 0;
@@ -12,27 +13,23 @@ void game::setup() {
 
 void game::draw() {
 	system("cls");
-	for (int i = 0; i < largura; ++i) {
+	for (int i = 0; i < largura+2; ++i) {
 		std::cout << "#"; //linha de cima
 	}
 	std::cout << std::endl;
 
 	for (int i = 0; i < altura; ++i) {
+		std::cout << "#"; //linha esquerda
 		for (int j = 0; j < largura; ++j) {
 			if (j == x && i == y) {
 				std::cout << "O"; //printa a cabeça
 			}else if (j == frutaX && i == frutaY) {
-				std::cout << "G"; //printa a cabeça
-			}
-			else if (j == 0) {
-				std::cout << "#"; //linha esquerda
-			}else if (j == largura - 1) {
-				std::cout << "#"; //linha direita
+				std::cout << "F"; //printa a fruta
 			}else {
 				std::cout << " ";
 			}
 		}
-		std::cout << std::endl;
+		std::cout << "#" << std::endl; //linha direita
 	}
 
 	for (int i = 0; i < largura; ++i) {
@@ -83,5 +80,15 @@ void game::logic() {
 			break;
 		default:
 			break;
+	}
+
+	if (x < 0 || x > largura-1 || y < 0 || y > altura-1 ) {
+		gameOver = true;
+	}
+
+	if (x == frutaX && y == frutaY) {
+		score++;
+		frutaX = rand() % largura;
+		frutaY = rand() % altura;
 	}
 }

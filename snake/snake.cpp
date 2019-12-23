@@ -14,7 +14,7 @@ int main()
         g.draw();
         g.input();
         g.logic();
-        //Sleep(10);
+        Sleep(100);
     }
 
     return 0;
