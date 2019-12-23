@@ -1,2 +1,4 @@
 # snake-game
-jogo da cobrinha no console em c++ usando o visual studio
+aplicação: snake (jogo da cobrinha)
+linguagem: c++ 
+ide: visual studio
