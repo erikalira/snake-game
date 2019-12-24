@@ -1,8 +1,7 @@
 #include <iostream>
 #include <Windows.h>
 #include "game.h"
-
-using namespace std;
+#include <stdio.h>
 
 int main()
 {

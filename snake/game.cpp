@@ -24,8 +24,6 @@ void game::draw() {
 		for (int j = 0; j < largura; ++j) {
 			if (j == x && i == y) {
 				std::cout << "O"; //printa a cabeça
-			}else if (j == frutaX && i == frutaY) {
-				std::cout << "F"; //printa a fruta
 			}else {
 				bool print = false;
 				for (int k = 0; k < rabo; ++k) {
@@ -35,7 +33,12 @@ void game::draw() {
 					}
 				}
 				if (!print) {
-					std::cout << " ";
+					if (j == frutaX && i == frutaY) {
+						std::cout << "F"; //printa a fruta
+					}
+					else {
+						std::cout << " ";
+					}
 				}
 			}
 		}
@@ -53,16 +56,20 @@ void game::input() {
 		switch (_getch())
 		{
 			case 'a':
-				dir = ESQ;
+				if(dir != DIR)
+					dir = ESQ;
 				break;
 			case 'd':
-				dir = DIR;
+				if (dir != ESQ)
+					dir = DIR;
 				break;
 			case 'w':
-				dir = CIMA;
+				if (dir != BAIXO)
+					dir = CIMA;
 				break;
 			case 's':
-				dir = BAIXO;
+				if (dir != CIMA)
+					dir = BAIXO;
 				break;
 			case 'x':
 				gameOver = true;
@@ -82,6 +89,7 @@ void game::logic() {
 		raboX[0] = x;
 		raboY[0] = y;
 	}
+
 	switch (dir)
 	{
 		case ESQ:

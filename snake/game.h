@@ -18,6 +18,6 @@ public:
 	enum eDirection { PARAR = 0, ESQ, DIR, CIMA, BAIXO };
 	eDirection dir;
 	int rabo;
-	int raboX[10], raboY[10];
+	int raboX[100], raboY[100];
 };
 
