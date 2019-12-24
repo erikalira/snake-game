@@ -11,9 +11,9 @@ ide: visual studio
 - cobrinha se mover
 - colisão com a parede
 - comer fruta
+- crescer calda (o mais dificil)
 
 ## funcionalidades futuras:
 
-- crescer calda
 - colisão com a calda
 - tela de game over
