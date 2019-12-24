@@ -9,6 +9,7 @@ void game::setup() {
 	frutaX = rand() % largura;
 	frutaY = rand() % altura;
 	score = 0;
+	rabo = 0;
 }
 
 void game::draw() {
@@ -26,7 +27,16 @@ void game::draw() {
 			}else if (j == frutaX && i == frutaY) {
 				std::cout << "F"; //printa a fruta
 			}else {
-				std::cout << " ";
+				bool print = false;
+				for (int k = 0; k < rabo; ++k) {
+					if (raboX[k] == j && raboY[k] == i) {
+						std::cout << "o";
+						print = true;
+					}
+				}
+				if (!print) {
+					std::cout << " ";
+				}
 			}
 		}
 		std::cout << "#" << std::endl; //linha direita
@@ -35,7 +45,7 @@ void game::draw() {
 	for (int i = 0; i < largura; ++i) {
 		std::cout << "#"; //linha de baixo
 	}
-	std::cout << std::endl;
+	std::cout << "\n\nscore:" << score << std::endl;
 }
 
 void game::input() {
@@ -64,6 +74,14 @@ void game::input() {
 }
 
 void game::logic() {
+	if (rabo > 0) {
+		for (int i = rabo - 1; i > 0; --i) {
+			raboX[i] = raboX[i - 1];
+			raboY[i] = raboY[i - 1];
+		}
+		raboX[0] = x;
+		raboY[0] = y;
+	}
 	switch (dir)
 	{
 		case ESQ:
@@ -88,6 +106,7 @@ void game::logic() {
 
 	if (x == frutaX && y == frutaY) {
 		score++;
+		rabo++;
 		frutaX = rand() % largura;
 		frutaY = rand() % altura;
 	}

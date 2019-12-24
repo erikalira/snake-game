@@ -17,5 +17,7 @@ public:
 	int x, y, frutaX, frutaY, score;
 	enum eDirection { PARAR = 0, ESQ, DIR, CIMA, BAIXO };
 	eDirection dir;
+	int rabo;
+	int raboX[10], raboY[10];
 };
 
